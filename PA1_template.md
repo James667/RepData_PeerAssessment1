@@ -16,7 +16,7 @@ First I constructed a histogram of total steps by date (removing NAs).
 
 ```r
 steps_per_date <- tapply(data$steps, data$date, sum, na.rm=TRUE)
-hist(steps_per_date, breaks = 20, xlab = "Total Steps per day", main = "Steps per Day")
+hist(steps_per_date, breaks = 20, xlab = "Total Steps per Day", main = "Steps per Day")
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
@@ -47,7 +47,7 @@ First I constructed a time series plot of the average number of steps measured f
 
 ```r
 meansteps_per_int <- tapply(data$steps, data$interval, mean, na.rm=TRUE)
-plot(row.names(meansteps_per_int), meansteps_per_int, type="l",xlab="Time (minutes)", ylab="Mean number of Steps per 5 minutes", main="Mean Number of Steps Throughout the Average Day")
+plot(row.names(meansteps_per_int), meansteps_per_int, type="l",xlab="Time (minutes)", ylab="Mean Number of Steps per 5 minutes", main="Mean Number of Steps Throughout the Average Day")
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
@@ -90,7 +90,7 @@ Then using the new data set with imputed values a histogram and mean and median 
 
 ```r
 new_steps_per_date <- tapply(newdata$steps, newdata$date, sum, na.rm=TRUE)
-hist(new_steps_per_date, breaks = 20, xlab = "Total Steps per day", main = "Steps per Day (with imputed values)")
+hist(new_steps_per_date, breaks = 20, xlab = "Total Steps per Day", main = "Steps per Day (with imputed values)")
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
@@ -129,7 +129,7 @@ Lastly I constructed a Time Series plot comparing weekdays and weekends.
 ```r
 steps_per_date_daytype <- aggregate(steps ~ daytype + interval, data = newdata, FUN=mean)
 library(lattice)
-xyplot(steps ~ interval | factor(daytype), layout = c(1, 2), xlab = "Time (minutes)", ylab = "Mean number of Steps per 5 minutes", main = "Steps per Day by Day Type (with imputed values)", type="l", data = steps_per_date_daytype)
+xyplot(steps ~ interval | factor(daytype), layout = c(1, 2), xlab = "Time (minutes)", ylab = "Mean Number of Steps per 5 minutes", main = "Steps per Day by Day Type (with imputed values)", type="l", data = steps_per_date_daytype)
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
